@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>カメラプレビュー</title>
+    <style>
+        #videoElement {
+            width: 100%;
+            height: auto;
+        }
+    </style>
+</head>
+
+<body>
+    <video id="videoElement" autoplay></video>
+
+    <script>
+        navigator.mediaDevices.getUserMedia({ video: true })
+            .then(function (stream) {
+                var video = document.getElementById("videoElement");
+                video.srcObject = stream;
+            })
+            .catch(function (err) {
+                console.log("カメラへのアクセスが拒否されました: " + err);
+            });
+    </script>
+</body>
+
+</html>
